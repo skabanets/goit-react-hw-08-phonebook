@@ -1,4 +1,4 @@
-# React-hw-07-phonebook
+# React-hw-08-phonebook
 
-Phonebook - application for storing phone book contacts. Added backend
-interaction for storing contacts.
+Phonebook - application for storing phone book contacts. Added user
+registration,login, private and private routes.
