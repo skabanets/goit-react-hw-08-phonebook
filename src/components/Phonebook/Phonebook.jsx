@@ -3,11 +3,7 @@ import { Contacts } from 'components/Contacts/Contacts';
 import { PhonebookWrapper, Subtitle, Title } from './Phonebook.styled';
 import { Filter } from 'components/Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectContacts,
-  selectError,
-  selectIsLoading,
-} from '../../redux/contacts/slice';
+import { selectContacts, selectError, selectIsLoading } from '../../redux/contacts/slice';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operation';
 import { Loader } from 'components/Loader/Loader';
@@ -32,7 +28,7 @@ export const Phonebook = () => {
   return (
     <PhonebookWrapper>
       {isLoading && <Loader />}
-      <Title>Phonebook</Title>
+      <Title className="text-center font-bold text-4xl">Phonebook</Title>
       <ContactForm />
       <Subtitle>Contacts ({contacts.length})</Subtitle>
       <Filter />
