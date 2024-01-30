@@ -1,9 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { selectUser } from '../../redux/auth/slice';
+import { logoutThunk } from '../../redux/auth/operation';
 
 export const UserNavLinks = () => {
   const { name, email } = useSelector(selectUser);
+  const dispatch = useDispatch();
+
   return (
     <div className="flex-none">
       <ul className="menu menu-horizontal px-1">
@@ -18,7 +21,9 @@ export const UserNavLinks = () => {
                 <p>{email}</p>
               </li>
               <li>
-                <button type="button">Exit</button>
+                <button type="button" onClick={() => dispatch(logoutThunk())}>
+                  Exit
+                </button>
               </li>
             </ul>
           </details>
