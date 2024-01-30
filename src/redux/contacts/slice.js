@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addContact, deleteContact, fetchContacts } from './operation';
+import { logoutThunk } from '../auth/operation';
 
 const initialState = {
   contacts: [],
@@ -22,33 +23,24 @@ const slice = createSlice({
         const index = state.contacts.findIndex(item => item.id === payload.id);
         state.contacts.splice(index, 1);
       })
+      .addCase(logoutThunk.fulfilled, state => {
+        state.contacts = [];
+      })
       .addMatcher(
-        isAnyOf(
-          fetchContacts.pending,
-          addContact.pending,
-          deleteContact.pending
-        ),
+        isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.pending),
         state => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        isAnyOf(
-          fetchContacts.fulfilled,
-          addContact.fulfilled,
-          deleteContact.fulfilled
-        ),
+        isAnyOf(fetchContacts.fulfilled, addContact.fulfilled, deleteContact.fulfilled),
         state => {
           state.isLoading = false;
         }
       )
       .addMatcher(
-        isAnyOf(
-          fetchContacts.rejected,
-          addContact.rejected,
-          deleteContact.rejected
-        ),
+        isAnyOf(fetchContacts.rejected, addContact.rejected, deleteContact.rejected),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;

@@ -30,3 +30,18 @@ export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
+  const savedToken = thunkAPI.getState().auth.token;
+  if (!savedToken) {
+    return thunkAPI.rejectWithValue('Token is not exist');
+  }
+
+  try {
+    setToken(savedToken);
+    const { data } = await phonebookApi.get('/users/current');
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
