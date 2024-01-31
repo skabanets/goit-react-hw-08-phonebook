@@ -6,7 +6,6 @@ import { AuthNavLinks } from './AuthNavLinks';
 
 export const Navbar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
 
   return (
     <div className="navbar bg-indigo-500 text-white font-bold">

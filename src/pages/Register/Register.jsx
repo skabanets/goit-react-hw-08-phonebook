@@ -1,13 +1,17 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operation';
+import { toast } from 'react-toastify';
 
 export const Register = () => {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
   const submit = data => {
-    dispatch(registerThunk(data));
+    dispatch(registerThunk(data))
+      .unwrap()
+      .then()
+      .catch(error => toast.error('Registration failed!'));
     reset();
   };
 
