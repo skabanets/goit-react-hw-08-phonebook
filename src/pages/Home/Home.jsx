@@ -1,12 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { selectUser } from '../../redux/auth/slice';
+
 const Home = () => {
+  const { name } = useSelector(selectUser);
+
   return (
     <div className="hero min-h-screen bg-neutral">
       <div className=" card hero-content text-center bg-neutral-content shadow-2xl p-8">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello User</h1>
+          <h1 className="text-5xl font-bold">{name ? `Hello ${name}` : 'Hello User'} </h1>
           <p className="py-8 text-justify">
             The Phonebook application is ideal for individuals or businesses who need a simple and
             intuitive solution for managing their contacts. Whether it's storing important phone
