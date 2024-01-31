@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 import { selectUser } from '../../redux/auth/slice';
 import { logoutThunk } from '../../redux/auth/operation';
+import { selectContacts } from '../../redux/contacts/slice';
 
 export const UserNavLinks = () => {
+  const contacts = useSelector(selectContacts);
   const { name, email } = useSelector(selectUser);
   const dispatch = useDispatch();
 
@@ -12,12 +14,14 @@ export const UserNavLinks = () => {
     <div className="flex-none">
       <ul className="menu menu-horizontal px-1">
         <li>
-          <NavLink to="/contacts">Contacts</NavLink>
+          <NavLink to="/contacts">
+            {contacts.length ? `Contacts (${contacts.length})` : 'Contacts'}
+          </NavLink>
         </li>
         <li>
           <details className="px-4">
             <summary>{name}</summary>
-            <ul className="p-2 -translate-x-2/4  bg-indigo-400 rounded-t-none">
+            <ul className="p-2 -translate-x-2/4  bg-secondary rounded-t-none">
               <li>
                 <p>{email}</p>
               </li>

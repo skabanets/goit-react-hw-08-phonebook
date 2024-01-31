@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Contacts } from 'components/Contacts/Contacts';
-import { PhonebookWrapper, Subtitle, Title } from './Phonebook.styled';
 import { Filter } from 'components/Filter/Filter';
 import { Loader } from 'components/Loader/Loader';
 
@@ -12,10 +11,9 @@ import { selectContacts, selectError, selectIsLoading } from '../../redux/contac
 import { fetchContacts } from '../../redux/contacts/operation';
 
 export const Phonebook = () => {
-  const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,12 +29,18 @@ export const Phonebook = () => {
   }
 
   return (
-    <PhonebookWrapper>
-      <Title className="text-center font-bold text-4xl">Phonebook</Title>
-      <ContactForm />
-      <Subtitle>Contacts ({contacts.length})</Subtitle>
-      <Filter />
-      {contacts.length ? <Contacts /> : <p>No contacts</p>}
-    </PhonebookWrapper>
+    <div className=" min-h-screen bg-neutral ">
+      <div className="flex flex-row justify-start">
+        <div className="p-2.5 max-w-md">
+          <ContactForm />
+          <Filter />
+        </div>
+        {contacts.length ? (
+          <Contacts />
+        ) : (
+          <h2 className="text-2xl mt-[80px] text-white">No contacts</h2>
+        )}
+      </div>
+    </div>
   );
 };
