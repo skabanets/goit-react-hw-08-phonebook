@@ -1,14 +1,15 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Contacts } from 'components/Contacts/Contacts';
 import { PhonebookWrapper, Subtitle, Title } from './Phonebook.styled';
 import { Filter } from 'components/Filter/Filter';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from '../../redux/contacts/slice';
-import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contacts/operation';
 import { Loader } from 'components/Loader/Loader';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import { selectContacts, selectError, selectIsLoading } from '../../redux/contacts/slice';
+import { fetchContacts } from '../../redux/contacts/operation';
 
 export const Phonebook = () => {
   const contacts = useSelector(selectContacts);

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { clearToken, phonebookApi, setToken } from '../../axiosConfig/phonebookApi';
 
-//sergey.kc.1997@gmail.com
 export const registerThunk = createAsyncThunk('register', async (credentials, thunkApi) => {
   try {
     const { data } = await phonebookApi.post('/users/signup', credentials);

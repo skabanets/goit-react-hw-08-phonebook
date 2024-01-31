@@ -1,15 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  FilterInput,
-  FilterLabel,
-  FilterWrpper,
-  ResetBtn,
-} from './Filter.styled';
-import {
-  changeFilter,
-  resetFilter,
-  selectFilters,
-} from '../../redux/filter/slice';
+
+import { FilterInput, FilterLabel, FilterWrpper, ResetBtn } from './Filter.styled';
+
+import { changeFilter, resetFilter, selectFilters } from '../../redux/filter/slice';
 
 export const Filter = () => {
   const dispatch = useDispatch();

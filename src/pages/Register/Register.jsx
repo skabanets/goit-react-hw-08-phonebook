@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+
 import { registerThunk } from '../../redux/auth/operation';
 import { toast } from 'react-toastify';
 
-export const Register = () => {
+const Register = () => {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
@@ -72,3 +73,5 @@ export const Register = () => {
     </div>
   );
 };
+
+export default Register;

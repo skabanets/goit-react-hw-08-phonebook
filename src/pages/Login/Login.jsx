@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+
 import { loginThunk } from '../../redux/auth/operation';
 
-export const Login = () => {
+const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
@@ -56,3 +57,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

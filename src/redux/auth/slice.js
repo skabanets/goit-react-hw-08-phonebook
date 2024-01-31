@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+
 import { loginThunk, logoutThunk, refreshThunk, registerThunk } from './operation';
 
 const initialState = {
@@ -34,7 +35,6 @@ const slice = createSlice({
       })
       .addCase(refreshThunk.rejected, (state, { payload }) => {
         state.isRefresh = false;
-        state.isError = payload;
       })
       .addMatcher(
         isAnyOf(registerThunk.pending, loginThunk.pending, logoutThunk.pending),

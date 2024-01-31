@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
@@ -19,3 +19,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { phonebookApi } from 'axiosConfig/phonebookApi';
+
+import { phonebookApi } from '../../axiosConfig/phonebookApi';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async (_, thunkAPI) => {
   try {
@@ -22,7 +23,6 @@ export const addContact = createAsyncThunk('contacts/addContact', async (body, t
 export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkAPI) => {
   try {
     const { data } = await phonebookApi.delete(`/contacts/${id}`);
-    console.log(data);
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

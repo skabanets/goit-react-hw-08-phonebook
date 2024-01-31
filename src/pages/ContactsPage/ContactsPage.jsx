@@ -1,9 +1,11 @@
 import { Phonebook } from 'components/Phonebook/Phonebook';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   return (
     <div>
       <Phonebook />
     </div>
   );
 };
+
+export default ContactsPage;

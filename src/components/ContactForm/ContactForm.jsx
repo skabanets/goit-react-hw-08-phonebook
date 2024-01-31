@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, FormButton, Input, InputLabel } from './ContactForm.styled';
 import { useForm } from 'react-hook-form';
+
+import { Form, FormButton, Input, InputLabel } from './ContactForm.styled';
+
 import { findContact } from 'helpers/findContact';
 import { selectContacts } from '../../redux/contacts/slice';
 import { addContact } from '../../redux/contacts/operation';

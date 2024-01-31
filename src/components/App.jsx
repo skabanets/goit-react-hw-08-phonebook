@@ -1,17 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
-import { Phonebook } from './Phonebook/Phonebook';
+import { useDispatch, useSelector } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
 import { Layout } from './Layout/Layout';
-import { Home } from 'pages/Home/Home';
-import { Login } from 'pages/Login/Login';
-import { Register } from 'pages/Register/Register';
 import { PublicRoute } from 'routes/PublicRoute';
 import { PrivateRoute } from 'routes/PrivateRoute';
-import { useDispatch, useSelector } from 'react-redux';
-import { refreshThunk } from '../redux/auth/operation';
-import { useEffect } from 'react';
-import { selectIsError, selectIsLoading, selectIsRefresh } from '../redux/auth/slice';
 import { Loader } from './Loader/Loader';
-import { toast } from 'react-toastify';
+
+import { refreshThunk } from '../redux/auth/operation';
+import { selectIsError, selectIsLoading, selectIsRefresh } from '../redux/auth/slice';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
+const Login = lazy(() => import('pages/Login/Login'));
+const Register = lazy(() => import('pages/Register/Register'));
 
 export const App = () => {
   const isRefresh = useSelector(selectIsRefresh);
@@ -42,7 +45,7 @@ export const App = () => {
           path="contacts"
           element={
             <PrivateRoute>
-              <Phonebook />
+              <ContactsPage />
             </PrivateRoute>
           }
         />

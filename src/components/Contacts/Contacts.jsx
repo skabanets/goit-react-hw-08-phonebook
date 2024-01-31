@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   ContactInfo,
   ContactItem,
@@ -6,6 +7,7 @@ import {
   DeleteContactBtn,
   FilterErrorMessage,
 } from './Contacts.styled';
+
 import { selectFilters } from '../../redux/filter/slice';
 import { selectContacts } from '../../redux/contacts/slice';
 import { deleteContact } from '../../redux/contacts/operation';
@@ -16,9 +18,7 @@ export const Contacts = () => {
   const dispatch = useDispatch();
 
   const getFilteredContacts = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   };
 
   const filteredContacts = getFilteredContacts();
@@ -34,18 +34,13 @@ export const Contacts = () => {
                 {item.name}: {item.number}
               </span>
             </ContactInfo>
-            <DeleteContactBtn
-              type="button"
-              onClick={() => dispatch(deleteContact(item.id))}
-            >
+            <DeleteContactBtn type="button" onClick={() => dispatch(deleteContact(item.id))}>
               Delete
             </DeleteContactBtn>
           </ContactItem>
         ))
       ) : (
-        <FilterErrorMessage>
-          Could not find contacts with this name!
-        </FilterErrorMessage>
+        <FilterErrorMessage>Could not find contacts with this name!</FilterErrorMessage>
       )}
     </ContactList>
   );
